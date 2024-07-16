@@ -1,0 +1,14 @@
+.header {
+  height: 132px;
+  padding-top: 2px;
+}
+.header h2 {
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+}
+.header .space-between {
+  display: flex;
+  justify-content: center;
+  padding: 11px 11px 0 11px;
+}

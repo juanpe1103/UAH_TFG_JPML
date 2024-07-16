@@ -1,0 +1,10 @@
+<ion-content>
+  <ion-button *ngIf="editMode" [disabled]="!valid" (click)="terminarRuta()" class="boton-terminar">Terminar Ruta</ion-button>
+  <ion-button *ngIf="editMode" (click)="editarDescripcion()" class="boton-terminar">Editar descripcion</ion-button>
+  <ion-button [disabled]="isNewRoute" (click)="valorarRuta()" class="boton-terminar">Valorar Ruta</ion-button>
+  <ion-button *ngIf="!isNewRoute && !isFavoriteRoute()" (click)="addToFavorites()" class="boton-terminar">Añadir a favoritos</ion-button>
+  <ion-button *ngIf="!isNewRoute && isFavoriteRoute()" (click)="removeToFavorites()" class="boton-terminar">Quitar de favoritos</ion-button>
+  <ion-button *ngIf="editMode && !isNewRoute" (click)="borrarRuta()" class="boton-terminar">Borrar Ruta</ion-button>
+  <ion-button (click)="cancelar()" class="boton-terminar">Cancelar</ion-button>
+<capacitor-google-maps #map></capacitor-google-maps>
+</ion-content>

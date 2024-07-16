@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Cancelar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Descripción</ion-label>
+    <ion-input maxlength="100" type="text" [(ngModel)]="description"></ion-input>
+  </ion-item>
+
+  <div class="ion-padding-top ion-text-center">
+    <ion-button [disabled]="description && description.length<1" (click)="accept()">Aceptar</ion-button>
+    <ion-button *ngIf="editarPunto" (click)="delete()">Borrar punto</ion-button>
+    <ion-button [disabled]="isLastLocation" *ngIf="editarPunto" (click)="addPoint()">Añadir punto</ion-button>
+  </div>
+</ion-content>

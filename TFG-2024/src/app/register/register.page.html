@@ -1,0 +1,39 @@
+<ion-content>
+  <ion-text>{{errorMessage}}</ion-text>
+
+  <div class="spinner" *ngIf="showSpinner">
+    <ion-spinner name="bubbles" color="danger"></ion-spinner>
+  </div>
+
+  <ion-list class="ion-list-border">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input maxlength="50" minlength="3" type="text" [(ngModel)]="form.name" (ngModelChange)="validateForm()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input maxlength="50" minlength="3" type="text" [(ngModel)]="form.username" (ngModelChange)="validateForm()"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input maxlength="40" minlength="6" type="password" [(ngModel)]="form.password" (ngModelChange)="validateForm()"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Confirm Password</ion-label>
+      <ion-input maxlength="40" minlength="6" type="password" [(ngModel)]="form.confirmPassword" (ngModelChange)="validateForm()"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" fill="outline" (click)="onSubmit()" [disabled]="!isFormValid">Register</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" fill="outline" color="danger" (click)="dismissModal()">Cancel</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Routes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="selectedSort" (ionChange)="sortRoutes()">
+    <ion-segment-button value="distance">
+      Distance
+    </ion-segment-button>
+    <ion-segment-button value="rating">
+      Rating
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-card *ngFor="let route of sortedRoutes">
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img src="https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""/>
+      </ion-avatar>
+      <ion-label>
+        <p>{{route.description}}</p> <!-- Mostrar la descripción de la ruta -->
+        <p>Distance: {{route.distance | number:'1.1-1'}} km</p> <!-- Mostrar la distancia -->
+        <p>Rating: {{calculateAverageRating(route.commentaries) | number:'1.1-1'}}</p> <!-- Mostrar la valoración media -->
+        <ion-button fill="outline" size="small" color="dark" (click)="goToRoute(route.id)">
+          View Route Details<ion-icon name="navigate-outline" slot="end"></ion-icon>
+        </ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+</ion-content>

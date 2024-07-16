@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-card>
+      <ion-item>
+        <ion-label>Login</ion-label>
+      </ion-item>
+    </ion-card>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-content>
+
+      <ion-text *ngIf="isLoginFailed" color="danger">
+        <p style="text-align: center; font-weight: bold; margin-top: 5px">Username or password not correct!</p>
+      </ion-text>
+
+      <div class="spinner" *ngIf="showSpinner">
+        <ion-spinner name="bubbles" color="danger"></ion-spinner>
+      </div>
+      <hr style="border: 1px solid #eee; height: 0">
+
+      <ion-list class="ion-list-border">
+
+        <ion-item>
+          <ion-label position="floating">Username</ion-label>
+          <ion-input type="text" [(ngModel)]="form.username"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" [(ngModel)]="form.password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+         <ion-row>
+           <ion-col>
+             <ion-button expand="block" (click)="onSubmit()">Login</ion-button>
+           </ion-col>
+           <ion-col>
+             <ion-button expand="block" fill="outline"(click)="register()">Register</ion-button>
+           </ion-col>
+         </ion-row>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

@@ -1,0 +1,64 @@
+@startuml
+
+class Commentary {
+    Long id
+    Integer score
+    String description
+    --
+    +Commentary()
+    +Commentary(Long id, Integer score, String description, User user, Location location)
+    --
+    User user
+    Location location
+}
+
+class Location {
+    Long id
+    Double lat
+    Double lng
+    Double distance
+    String description
+    --
+    +Location()
+    +Location(Long id, Double lat, Double lng, Double distance, String description, List<Locations> locations, User user, List<Commentary> commentaries)
+    --
+    List<Locations> locations
+    User user
+    List<Commentary> commentaries
+}
+
+class Locations {
+    Long id
+    Double lat
+    Integer pos
+    Double lng
+    String description
+    --
+    +Locations()
+    +Locations(Long id, Double lat, Integer pos, Double lng, String description, Location location)
+    --
+    Location location
+}
+
+class User {
+    Long id
+    String name
+    String username
+    String email
+    String password
+    --
+    +User()
+    +User(String name, String username, String email, String password, List<Commentary> commentaries)
+    --
+    List<Commentary> commentaries
+}
+
+Commentary "0..*" --> "1" User
+Commentary "0..*" --> "1" Location
+Location "1" --> "0..*" Locations
+Location "0..*" --> "1" User
+Location "0..*" --> "1" Commentary
+Locations "0..*" --> "1" Location
+User "1" --> "0..*" Commentary
+
+@enduml

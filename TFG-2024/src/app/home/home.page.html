@@ -1,0 +1,71 @@
+<ion-content>
+  <div class="header">
+    <h2>Route</h2>
+    <div class="space-between">
+      <div class="followings">
+        <ion-badge color="warning" mode="ios">{{routeLength}}</ion-badge>
+      </div>
+    </div>
+  </div>
+
+  <ion-row>
+    <ion-col class="ion-text-center"> <ion-button fill="outline" size="small" color="dark" (click)="addRoute()">
+      Create new Route<ion-icon name="create-outline" slot="end"></ion-icon></ion-button> </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="ion-text-center"> <ion-button fill="outline" size="small" color="dark" (click)="searchRoutes()">
+      Search Routes<ion-icon name="create-outline" slot="end"></ion-icon></ion-button> </ion-col>
+  </ion-row>
+
+
+  <h2>My routes</h2>
+  <ion-card *ngFor="let route of routes">
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img src="https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""/>
+      </ion-avatar>
+      <ion-label>
+        <p>{{route.description}}</p> <!-- Mostrar la descripción de la ruta -->
+        <ion-button fill="outline" size="small" color="dark" (click)="goToRoute(route.id)">
+          View Route Details<ion-icon name="navigate-outline" slot="end"></ion-icon>
+        </ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+  <h2>My favorite routes</h2>
+  <ion-card *ngFor="let route of favoriteRoutes">
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img src="https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""/>
+      </ion-avatar>
+      <ion-label>
+        <p>{{route.description}}</p> <!-- Mostrar la descripción de la ruta -->
+        <ion-button fill="outline" size="small" color="dark" (click)="goToRoute(route.id)">
+          View Route Details<ion-icon name="navigate-outline" slot="end"></ion-icon>
+        </ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+  <br>
+</ion-content>
+
+<ion-footer class="ion-text-center ion-no-padding">
+  <ion-toolbar color="warning">
+    <ion-row>
+      <ion-col>
+        <ion-button color="medium" size="small" (click)="editUSer(info?.username)">Update
+          <ion-icon name="create-outline" slot="end"></ion-icon></ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="danger" size="small" (click)="presentAlertConfirmDeleteUser(info?.id)">Delete
+          <ion-icon name="close-outline" slot="end"></ion-icon></ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="medium" size="small" (click)="logout()">Logout
+          <ion-icon name="refresh-circle-outline" slot="end"></ion-icon></ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
